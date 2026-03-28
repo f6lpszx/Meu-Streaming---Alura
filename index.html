@@ -1,0 +1,79 @@
+<!DOCTYPE html> <!-- informa ao navegador que este documento usa HTML5 -->
+<html lang="pt-br"> <!-- começa o documento HTML e define o idioma como português do Brasil -->
+<head> <!-- cabeçalho com informações da página que não aparecem no corpo -->
+    <meta charset="UTF-8"> <!-- define a codificação de caracteres para UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- garante que a página se ajuste em celulares -->
+    <title>Netflix</title> <!-- título que aparece na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- importa o arquivo CSS para estilizar a página -->
+    <script src="script.js" defer></script> <!-- adiciona o JavaScript de tema -->
+</head>
+<body> <!-- início do conteúdo visível na página -->
+    <main> <!-- área principal do conteúdo da página -->
+        <header> <!-- cabeçalho do conteúdo principal -->
+            <div class="header-top">
+                <h1>Quem está assistindo?</h1> <!-- título principal da página -->
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">☀️</button> <!-- botão para alternar entre light e dark mode -->
+            </div>
+        </header>
+
+        <ul class="profiles" aria-label="Perfis de usuário"> <!-- lista não ordenada contendo as listas ordenadas de perfis -->
+            <li>
+                <ul aria-label="Perfil Sasori"> <!-- lista não ordenada para o perfil individual -->
+                    <li class="profile"> <!-- um perfil individual -->
+                        <figure> <!-- agrupa a imagem e a legenda do perfil -->
+                            <a href="catalogo/catalogo.html" class="profile-link" data-name="Sasori" data-img="/assets/sasori.jpg" onclick="localStorage.setItem('activeProfile', JSON.stringify({name:'Sasori', image:'/assets/sasori.jpg'}))"> <!-- ao clicar no perfil, abre o catálogo e salva o perfil ativo no localStorage -->
+                                <img src="/assets/sasori.jpg" alt="Imagem do Perfil 1"> <!-- foto do perfil com texto alternativo -->
+                                <figcaption>Sasori</figcaption> <!-- nome do perfil exibido abaixo da imagem -->
+                            </a>
+                        </figure>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul aria-label="Perfil Felps">
+                    <li class="profile"> <!-- outro card de perfil -->
+                        <figure> <!-- imagem e legenda juntos -->
+                            <a href="catalogo/catalogo.html" class="profile-link" data-name="Felps" data-img="/assets/Perfil - 2.jpg" onclick="localStorage.setItem('activeProfile', JSON.stringify({name:'Felps', image:'/assets/Perfil - 2.jpg'}))"> <!-- ao clicar no perfil, abre o catálogo e salva o perfil ativo no localStorage -->
+                                <img src="/assets/Perfil - 2.jpg" alt="Sasuke Uchiha, personagem do anime Naruto, representando o Perfil 2"> <!-- imagem do perfil -->
+                                <figcaption>Felps</figcaption> <!-- legenda com o nome do perfil -->
+                            </a>
+                        </figure>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul aria-label="Perfil Bruno">
+                    <li class="profile"> <!-- mais um perfil -->
+                        <figure> <!-- estrutura de imagem + legenda -->
+                            <a href="catalogo/catalogo.html" class="profile-link" data-name="Bruno" data-img="/assets/transferir.jpg" onclick="localStorage.setItem('activeProfile', JSON.stringify({name:'Bruno', image:'/assets/transferir.jpg'}))"> <!-- ao clicar no perfil, abre o catálogo e salva o perfil ativo no localStorage -->
+                                <img src="/assets/transferir.jpg" alt="Imagem do Perfil 1"> <!-- foto do perfil -->
+                                <figcaption>Bruno</figcaption> <!-- nome do perfil -->
+                            </a>
+                        </figure>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul aria-label="Perfil Larinha">
+                    <li class="profile profile--larinha"> <!-- perfil especial com classe extra para estilo diferente -->
+                        <figure> <!-- agrupa imagem e legenda -->
+                            <a href="catalogo/catalogo.html" class="profile-link" data-name="Larinha" data-img="/assets/transferir (1).jpg" onclick="localStorage.setItem('activeProfile', JSON.stringify({name:'Larinha', image:'/assets/transferir (1).jpg'}))"> <!-- ao clicar no perfil, abre o catálogo e salva o perfil ativo no localStorage -->
+                                <img src="/assets/transferir (1).jpg" alt="Imagem do Perfil Larinha"> <!-- foto do perfil Larinha -->
+                                <figcaption>Larinha</figcaption> <!-- nome do perfil -->
+                            </a>
+                        </figure>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="add-profile-wrapper"> <!-- envolve o botão para centralizá-lo abaixo da grade -->
+            <button type="button" class="add-profile" aria-label="Adicionar perfil"> <!-- botão para adicionar novo perfil -->
+                <span class="add-icon">+</span> <!-- símbolo de “mais” no botão -->
+                <span>Adicionar perfil</span> <!-- texto do botão -->
+            </button>
+        </div>
+    </main>
+    <script src="js/name.js"></script>
+</body>
+</html>

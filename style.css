@@ -1,0 +1,371 @@
+:root {
+    /* início das variáveis globais para cores e estilos reutilizáveis */
+    --bg: #141414;
+    /* cor escura de fundo principal */
+    --bg-secondary: #1a1a1a;
+    /* cor secundária de fundo */
+    --text: #f5f5f1;
+    /* cor clara para textos */
+    --text-muted: #b3b3b3;
+    /* cor mais suave para textos menos importantes */
+    --red: #e50914;
+    /* vermelho Netflix usado em destaques */
+    --card: rgba(255, 255, 255, 0.06);
+    /* fundo translúcido para cards */
+    --border: rgba(255, 255, 255, 0.1);
+    /* borda suave para cards */
+    --button-bg: rgba(255, 255, 255, 0.08);
+    /* fundo dos controles */
+}
+
+body.light-theme {
+    --bg: #f7f7f7;
+    --bg-secondary: #ffffff;
+    --text: #111111;
+    --text-muted: #666666;
+    --card: rgba(255, 255, 255, 0.95);
+    --border: rgba(0, 0, 0, 0.12);
+    --button-bg: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    /* aplica a todos os elementos */
+    box-sizing: border-box;
+    /* inclui padding e borda na largura total */
+}
+
+html,
+body {
+    /* define regras básicas para o documento e o corpo */
+    margin: 0;
+    /* remove a margem padrão do navegador */
+    min-height: 100%;
+    /* garante que o corpo ocupe pelo menos toda a altura da tela */
+}
+
+body {
+    /* estilo do corpo da página */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* define a fonte padrão */
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 24%),
+        /* primeiro gradiente do fundo */
+        linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg) 100%);
+    /* segundo gradiente do fundo */
+    color: var(--text);
+    /* cor principal do texto */
+}
+
+main {
+    /* área principal do conteúdo */
+    min-height: 100vh;
+    /* define altura mínima igual à altura da tela */
+    display: flex;
+    /* usa flexbox para organizar o conteúdo */
+    flex-direction: column;
+    /* empilha os elementos verticalmente */
+    justify-content: center;
+    /* centraliza verticalmente */
+    align-items: center;
+    /* centraliza horizontalmente */
+    padding: 3rem 1.5rem;
+    /* espaço interno ao redor do conteúdo */
+}
+
+header {
+    /* cabeçalho do conteúdo principal */
+    text-align: center;
+    /* centraliza o texto do cabeçalho */
+    margin-bottom: 2rem;
+    /* espaço abaixo do cabeçalho */
+}
+
+header h1 {
+    /* estilo do título principal */
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    /* tamanho responsivo do título */
+    line-height: 1.05;
+    /* altura da linha do título */
+    letter-spacing: -0.05em;
+    /* espaçamento entre letras */
+    margin: 0;
+    /* remove margem padrão do h1 */
+}
+
+.profiles {
+    /* grade que contém os perfis */
+    display: grid;
+    /* usa grid para organizar os cards */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* mantém várias colunas até o limite mínimo */
+    gap: 1.5rem;
+    /* espaço entre os cards */
+    width: min(980px, 100%);
+    /* largura máxima limitada */
+    align-items: start;
+    /* alinha os itens no topo */
+    list-style: none;
+    /* remove marcadores da lista não ordenada */
+    padding: 0;
+    /* remove preenchimento padrão da lista */
+    margin: 0;
+    /* remove margem padrão da lista */
+}
+
+.profile {
+    /* estilo comum para cada card de perfil */
+    display: flex;
+    /* usa flexbox interno */
+    flex-direction: column;
+    /* organiza conteúdos verticalmente */
+    background: var(--card);
+    /* fundo translúcido do card */
+    border: 1px solid var(--border);
+    /* borda leve do card */
+    border-radius: 1.5rem;
+    /* bordas arredondadas */
+    overflow: hidden;
+    /* esconde conteúdo que ultrapassar */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    /* animação suave nas mudanças */
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    /* sombra do card */
+}
+
+.profile:hover {
+    /* efeito ao passar o mouse sobre o card */
+    transform: translateY(-6px);
+    /* levanta o card */
+    border-color: rgb(255, 255, 255);
+    /* borda mais clara */
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    /* sombra mais forte */
+}
+
+.profile--larinha {
+    /* estilo específico para o perfil Larinha */
+    justify-self: center;
+    /* centraliza este card na grid */
+    max-width: 240px;
+    /* largura máxima para este card */
+}
+
+.add-profile-wrapper {
+    /* envolve o botão para centralizá-lo */
+    width: 100%;
+    /* ocupa toda a largura disponível */
+    display: flex;
+    /* usa flexbox para centralização */
+    justify-content: center;
+    /* centraliza horizontalmente */
+    margin-top: 2rem;
+    /* adiciona espaço acima do botão */
+}
+
+.add-profile {
+    /* estilo do botão de adicionar perfil */
+    display: inline-flex;
+    /* flexbox em linha para o botão */
+    flex-direction: column;
+    /* empilha o ícone e o texto verticalmente */
+    align-items: center;
+    /* centraliza horizontalmente */
+    justify-content: center;
+    /* centraliza verticalmente */
+    width: min(280px, 100%);
+    /* largura adaptativa */
+    color: var(--text-muted);
+    /* cor suave do texto */
+    background: var(--button-bg);
+    /* fundo do botão de tema */
+    border: 1px dashed var(--border);
+    /* borda tracejada */
+    border-radius: 1.5rem;
+    /* bordas arredondadas */
+    cursor: pointer;
+    /* mostra que é clicável */
+    padding: 1.5rem 1.25rem;
+    /* espaço interno */
+    min-height: 220px;
+    /* altura mínima do botão */
+    gap: 0.75rem;
+    /* espaço entre ícone e texto */
+}
+
+.add-profile:hover {
+    /* efeito de hover no botão */
+    color: var(--text);
+    /* texto fica mais claro */
+    border-color: rgb(255, 255, 255);
+    /* borda vermelha clara */
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: var(--button-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(980px, 100%);
+    margin: 0 auto;
+}
+
+.add-profile .add-icon {
+    /* estilo do ícone dentro do botão */
+    font-size: 2.5rem;
+    /* tamanho grande do símbolo + */
+    line-height: 1;
+    /* mantém a linha compacta */
+    color: var(--red);
+    /* cor vermelha */
+}
+
+.add-profile span:last-child {
+    /* estilo do texto do botão */
+    display: block;
+    /* torna o span um bloco */
+    margin-top: 0.8rem;
+    /* espaço acima do texto */
+    font-size: 0.95rem;
+    /* tamanho do texto */
+    font-weight: 300;
+    /* peso leve do texto */
+}
+
+.profile figure {
+    /* estrutura interna de imagem + legenda */
+    margin: 0;
+    /* remove margem padrão */
+    padding: 1.25rem;
+    /* espaço interno dentro do figure */
+    display: flex;
+    /* usa flexbox para organizar */
+    flex-direction: column;
+    /* empilha a imagem e legenda */
+    gap: 1rem;
+    /* espaço entre itens */
+    align-items: center;
+    /* centraliza o conteúdo */
+    justify-content: space-between;
+    /* distribui espaço verticalmente */
+    flex: 1;
+    /* faz o figure ocupar todo o espaço disponível */
+}
+
+.profile img {
+    /* estilo da imagem do perfil */
+    width: 100%;
+    /* ocupa toda a largura do card */
+    aspect-ratio: 1 / 1;
+    /* força proporção quadrada */
+    object-fit: cover;
+    /* corta a imagem para preencher o espaço sem deformar */
+    border-radius: 1.1rem;
+    /* bordas arredondadas */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* borda fina ao redor da imagem */
+}
+
+.profile figcaption {
+    /* estilo do texto da legenda do perfil */
+    font-size: 1rem;
+    /* tamanho da fonte */
+    font-weight: 700;
+    /* torna o texto em negrito */
+    color: var(--text);
+    /* cor clara do texto */
+    text-align: center;
+    /* centraliza o texto */
+}
+
+@media (max-width: 900px) {
+    main {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .profiles {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        width: 100%;
+        justify-items: center;
+    }
+
+    .profile--larinha {
+        max-width: none;
+        justify-self: auto;
+    }
+
+    .add-profile {
+        width: 100%;
+        min-height: 210px;
+    }
+}
+
+@media (max-width: 640px) {
+    main {
+        padding: 2rem 1rem;
+    }
+
+    header h1 {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .profiles {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .profile {
+        width: 100%;
+    }
+
+    .add-profile {
+        min-height: 200px;
+        padding: 1.25rem 1rem;
+    }
+
+    .profile img {
+        max-height: none;
+    }
+}
+
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .add-profile {
+        padding: 1rem;
+        min-height: 180px;
+    }
+
+    .add-profile .add-icon {
+        font-size: 2rem;
+    }
+
+    .add-profile span:last-child {
+        font-size: 0.9rem;
+    }
+}
